@@ -110,30 +110,6 @@ class MainController extends Controller {
         return view('front.thanks');
     }
     
-    public function deletSlackFile() {
-        $url = 'https://slack.com/api/files.list?token=xoxp-2608015810-3053709798-130457915664-443afb6553a6a4f0ce91042fdf90121a&user=U031KLVPG';
-        
-        $client1 = new Client();
-        $res = $client1->get($url);
-        $files = json_decode($res->getBody());
-        $ids = [];
-        
-        foreach($files->files as $f) {
-            array_push($ids, $f->id);
-        }
-        
-        if(!empty($ids)) {
-            foreach ($ids as $id) {
-                $deleteUrl = 'https://slack.com/api/files.delete?token=xoxp-2608015810-3053709798-130457915664-443afb6553a6a4f0ce91042fdf90121a&file=' . $id;
-                $client1->get($deleteUrl);
-            }
-        } else {
-            return 'No more files :)';
-        }
-        
-        return 'You can refresh';
-    }
-    
     public function getContact() {
         return view('front.contact');
     }
