@@ -60,6 +60,7 @@ class User extends BaseBusiness {
     public function register(RegisterUser $request) {
         DB::beginTransaction();
         try {
+            
             $user = [
                 'firstname'  => $request->input('firstname'),
                 'lastname'   => $request->input('lastname'),
@@ -68,13 +69,13 @@ class User extends BaseBusiness {
                 'password'   => Hash::make($request->input('password')),
                 'created_at' => new Carbon('now')
             ];
-            
+    
             if (!$this->write->create($user)) {
                 throw new Exception('Une erreur est survenue lors de la creation de l\'utilisateur', 403);
             }
             $user = $this->read->getLastItems(1);
-            $informationsBusiness = new Informations();
-            
+            $informationsBusiness = new InformationsBusiness();
+    
             $informations = [
                 'user_id'      => $user->id,
                 'company'      => $request->input('company'),

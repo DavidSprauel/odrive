@@ -75,7 +75,8 @@
                             </figure>
                         </div>
                         <!--Content Column-->
-                        <div class="content-column col-md-6 col-sm-12 col-xs-12">
+                        @if(!is_null($basket))
+                            <div class="content-column col-md-6 col-sm-12 col-xs-12">
                             <div class="content-box">
                                 <div class="info">
                                     <div class="sub-title">Paniers Composé de la semaine</div>
@@ -100,6 +101,7 @@
 
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

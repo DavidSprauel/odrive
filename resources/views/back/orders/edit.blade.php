@@ -234,7 +234,7 @@
                         class="btn btn-success btn-block statusBtn"
                         {{ in_array($order->status, [0, 7, 3]) ? 'disabled' : '' }}>
                     <i class="fa fa-fw fa-check-circle"></i>
-                    Valider cette commande btn-block
+                    Valider cette commande
                 </button>
             </div>
 

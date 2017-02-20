@@ -51,7 +51,7 @@ class Product extends BaseBusiness{
                 return null;
             }
     
-            $product = $this->read->getLastProducts(1);
+            $product = $this->read->getLastItems(1);
         
             if($request->hasFile('picture')) {
                 $product->picture = $this->uploadPicture($request->file('picture'), $product, 'products');
