@@ -92,6 +92,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var btn = $('.add-cart');
+
             btn.on('click', function () {
                 var btn = $(this);
 

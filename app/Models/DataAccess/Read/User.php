@@ -13,5 +13,10 @@ class User extends BaseReader {
     public function getRoles() {
         return UserModel::getRoleArray();
     }
+    
+    public function paginateUsers($n) {
+        return UserModel::whereIn('active', [UserModel::USER_ACTIVE, UserModel::USER_INACTIVE])
+                ->paginate($n);
+    }
 
 }

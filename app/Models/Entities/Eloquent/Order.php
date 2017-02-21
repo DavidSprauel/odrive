@@ -94,11 +94,11 @@ class Order extends BaseModel {
         $total = 0;
         
         foreach ($this->products as $p) {
-            $total += $p->price;
+            $total += $p->price * $p->pivot->quantity;
         }
         
         foreach ($this->baskets as $b) {
-            $total += $b->price;
+            $total += $b->price * $b->pivot->quantity;
         }
         
         return number_format((float) $total, 2, '.', '');

@@ -1,7 +1,7 @@
 @extends('front.template.template')
 
 @section('title')
-    Index
+    Accueil
 @stop
 
 @section('content')
@@ -101,6 +101,14 @@
 
                             </div>
                         </div>
+                        @else
+                            <div class="content-column col-md-6 col-sm-12 col-xs-12">
+                                <div class="content-box">
+                                    <div class="text text-center">
+                                        Aucun panier en ce moment.
+                                    </div>
+                                </div>
+                            </div>
                         @endif
                     </div>
                 </div>

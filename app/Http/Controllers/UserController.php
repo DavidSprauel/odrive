@@ -23,7 +23,7 @@ class UserController extends Controller {
     }
     
     public function index() {
-        $users = $this->business->paginate(10);
+        $users = $this->business->paginateUsers(10);
         
         return view('back.users.index')
             ->with('users', $users);

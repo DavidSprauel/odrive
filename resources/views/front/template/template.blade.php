@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="csrf-token" content="{{ csrf_token() }}"/>
-        <title>@yield('title') - Olympic Drive</title>
+        <title>@yield('title') - Olympic Drive - Fruits et légumes frais près de chez vous</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="{{ asset('front/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">

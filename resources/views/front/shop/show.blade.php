@@ -137,7 +137,7 @@
                 var data = {
                     product: btn.data('id'),
                     quantity: $('input[name=quantity]').val(),
-                    type: 2
+                    type: 1
                 }
 
                 $.ajax({
@@ -146,7 +146,7 @@
                     data: data,
                     success: function (data) {
                         if (data.success) {
-                            $(document).find('.cart_items').text(data.cart;
+                            $(document).find('.cart_items').text(data.cart);
                             swal('Ajouté au panier', 'Le produit a bien été ajouté au panier', 'success');
                         }
                     }
@@ -161,7 +161,7 @@
                 var data = {
                     product: btn.data('id'),
                     quantity: $('input[name=quantity]').val(),
-                    type: 2
+                    type: 1
                 }
 
                 $.ajax({

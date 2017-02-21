@@ -45,7 +45,7 @@
                                             <li>
                                                 <a href="{{ route('cart') }}">
                                                     Mon panier
-                                                    <span class="cart_items">
+                                                    <span class="label label-default cart_items">
                                                         {{ session()->has('cart') ? count(session('cart')) : 0 }}
                                                     </span>
                                                 </a>
@@ -69,7 +69,7 @@
                                             <li>
                                                 <a href="{{ route('cart') }}">
                                                     Mon panier
-                                                    <span class="label label-default">
+                                                    <span class="label label-default cart_items">
                                                         {{ session()->has('cart') ? count(session('cart')) : 0 }}
                                                     </span>
                                                 </a>

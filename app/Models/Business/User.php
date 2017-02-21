@@ -90,7 +90,6 @@ class User extends BaseBusiness {
             
             if ($informationsBusiness->create($informations)) {
                 DB::commit();
-                
                 return true;
             }
             
@@ -233,5 +232,9 @@ class User extends BaseBusiness {
             
             return $e;
         }
+    }
+    
+    public function paginateUsers($nb) {
+        return $this->read->paginateUsers($nb);
     }
 }

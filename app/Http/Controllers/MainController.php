@@ -33,28 +33,27 @@ class MainController extends Controller {
         $basket = $this->basketBusiness->getLastItems(1);
         $products = $this->productBusiness->getLastItems(4);
         
-        return view('front.index')
-            ->with('products', $products)
-            ->with('basket', $basket);
+        return view('front.index', compact('basket', 'products'));
     }
     
     public function getRegister() {
         $countries = $this->infosBusiness->getCountryArray();
-        return view('front.users.register')->with('countries', $countries);
+        
+        return view('front.users.register', compact('countries'));
     }
     
     public function postRegister(RegisterUser $request) {
         $user = $this->userBusiness->register($request);
-        if($user) {
+        if ($user) {
             return redirect()->route('front.login')
                 ->with('flash', [
-                    'code' => $this::SUCCESS,
+                    'code'    => $this::SUCCESS,
                     'message' => 'Votre compte a été ajouté avec success. Vous pouvez vous connecter dès mainenant.'
                 ]);
         } else {
             return redirect()->back()
                 ->with('flash', [
-                    'code' => $this::ERROR,
+                    'code'    => $this::ERROR,
                     'message' => 'Une erreur est survenue, veuillez contactez l\'assistance.'
                 ])
                 ->withInput();
@@ -68,12 +67,12 @@ class MainController extends Controller {
     public function postLogin(Login $request) {
         $user = $this->userBusiness->login($request);
         
-        if(!is_null($user) && Auth::check()) {
+        if (!is_null($user) && Auth::check()) {
             return redirect()->intended('/checkout');
         }
-    
+        
         return redirect()->route('login')->with('flash', [
-            'code' => $this::ERROR,
+            'code'    => $this::ERROR,
             'message' => 'Ce compte n\'existe pas ou vous n\'avez pas les droits pour vous connecter.'
         ]);
     }
@@ -81,23 +80,25 @@ class MainController extends Controller {
     public function getCart() {
         $cart = session()->has('cart') ? session('cart') : [];
         
-        return view('front.shop.cart')
-            ->with('subTotal', 0)
-            ->with('total', 0)
-            ->with('cart', $cart);
+        return view('front.shop.cart', [
+            'subTotal' => 0,
+            'total'    => 0,
+            'cart'     => $cart
+        ]);
     }
     
     public function getCheckout() {
-        if(!session()->has('cart')) {
+        if (!session()->has('cart')) {
             return redirect('/');
         }
         $countries = $this->infosBusiness->getCountryArray();
         $cart = session('cart');
-    
-        return view('front.shop.checkout')
-            ->with('total', 0)
-            ->with('countries', $countries)
-            ->with('cart', $cart);
+        
+        return view('front.shop.checkout', [
+            'total'     => 0,
+            'countries' => $countries,
+            'cart'      => $cart
+        ]);
     }
     
     public function postCheckout(ValidateOrder $request) {
