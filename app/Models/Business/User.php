@@ -237,4 +237,8 @@ class User extends BaseBusiness {
     public function paginateUsers($nb) {
         return $this->read->paginateUsers($nb);
     }
+    
+    public function getAdmin() {
+        return $this->read->getAdmin();
+    }
 }

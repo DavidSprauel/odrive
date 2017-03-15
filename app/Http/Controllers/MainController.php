@@ -4,6 +4,7 @@ namespace OlympicDrive\Http\Controllers;
 
 use Auth;
 use GuzzleHttp\Client;
+use OlympicDrive\Http\Requests\ContactRequest;
 use OlympicDrive\Http\Requests\Login;
 use OlympicDrive\Http\Requests\RegisterUser;
 use OlympicDrive\Http\Requests\ValidateOrder;
@@ -115,7 +116,7 @@ class MainController extends Controller {
         return view('front.contact');
     }
     
-    public function postContact() {
-        
+    public function postContact(ContactRequest $request) {
+        dd('ok');
     }
 }

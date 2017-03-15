@@ -12,11 +12,14 @@ use Hash;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Notification;
 use OlympicDrive\Http\Requests\UpdateOrder;
 use OlympicDrive\Http\Requests\ValidateOrder;
 use OlympicDrive\Models\Business\Basket;
 use OlympicDrive\Models\DataAccess\Read\Order as OrderRead;
 use OlympicDrive\Models\DataAccess\Write\Order as OrderWrite;
+use OlympicDrive\Notifications\OrderNew;
+use OlympicDrive\Notifications\OrderStatusUpdate;
 
 class Order extends BaseBusiness {
     protected $write;
@@ -116,6 +119,7 @@ class Order extends BaseBusiness {
             }
             
             session()->forget('cart');
+            Notification::send($userBusiness->getAdmin(), new OrderNew($order));
             DB::commit();
             
             return true;
@@ -148,6 +152,7 @@ class Order extends BaseBusiness {
             
             $order->status = $request->input('status');
             $order->save();
+            $order->user->notify(new OrderStatusUpdate($order));
             
             return $order;
             

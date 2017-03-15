@@ -21,27 +21,32 @@
             </div>
 
             <div class="contact-form default-form">
-                <form method="post" action="sendemail.php" id="contact-form">
+                {{ Form::open(['route' => 'post.contact', 'method' => 'POST', 'id'=> 'contact-form']) }}
                     <div class="row clearfix">
 
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12 {{ $errors->has('firstname') ? 'has-error has-feedback' : '' }}">
                             <input type="text" name="firstname" value="" placeholder="Prénom *">
+                            <small class="text-danger">{{ $errors->first('firstname') ?? '' }}</small>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12 {{ $errors->has('lastname') ? 'has-error has-feedback' : '' }}">
                             <input type="text" name="lastname" value="" placeholder="Nom *">
+                            <small class="text-danger">{{ $errors->first('lastname') ?? '' }}</small>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12 {{ $errors->has('email') ? 'has-error has-feedback' : '' }}">
                             <input type="email" name="email" value="" placeholder="Email *">
+                            <small class="text-danger">{{ $errors->first('email') ?? '' }}</small>
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12 {{ $errors->has('subject') ? 'has-error has-feedback' : '' }}">
                             <input type="text" name="subject" value="" placeholder="Sujet *">
+                            <small class="text-danger">{{ $errors->first('subject') ?? '' }}</small>
                         </div>
 
-                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12 {{ $errors->has('message') ? 'has-error has-feedback' : '' }}">
                             <textarea name="message" placeholder="Message"></textarea>
+                            <small class="text-danger">{{ $errors->first('message') ?? '' }}</small>
                         </div>
                         <div class="form-group col-md-12 col-sm-12 col-xs-12">
                             <div class="text-center">
@@ -51,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                {{ Form::close() }}
             </div>
         </div>
     </section>

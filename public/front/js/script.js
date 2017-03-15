@@ -380,6 +380,7 @@
 
 
 	//Contact Form Validation
+	/*
 	if($('#contact-form').length){
 		$('#contact-form').validate({
 			rules: {
@@ -401,7 +402,7 @@
 				}
 			}
 		});
-	}
+	}*/
 
 
 	// Scroll to a Specific Div

@@ -18,5 +18,10 @@ class User extends BaseReader {
         return UserModel::whereIn('active', [UserModel::USER_ACTIVE, UserModel::USER_INACTIVE])
                 ->paginate($n);
     }
+    
+    public function getAdmin() {
+        return UserModel::whereIn('role_id', [UserModel::ROLE_ADMIN, UserModel::ROLE_EDITOR])
+            ->get();
+    }
 
 }

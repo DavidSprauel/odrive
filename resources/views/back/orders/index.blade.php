@@ -31,6 +31,7 @@
                 <tr>
                     <th>#</th>
                     <th>Date de Commande</th>
+                    <th>Par</th>
                     <th>Montant</th>
                     <th>Status</th>
                     <th></th>
@@ -43,6 +44,7 @@
                         <td class="vert-align">
                             le {{ $o->created_at->format('d/m/Y à H:i:s') }}
                         </td>
+                        <td class="vert-align">{{ $o->user->getFullName() }}</td>
                         <td class="vert-align">{{ $o->getTotal() }} €</td>
                         <td class="vert-align">{!! $o->getStatusText()  !!}</td>
                         <td class="vert-align">

@@ -4,8 +4,11 @@ namespace OlympicDrive\Models\Entities\Eloquent;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Order extends BaseModel {
+    
+    use Notifiable;
     
     protected $table = 'orders';
     
